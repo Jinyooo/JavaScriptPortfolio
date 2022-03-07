@@ -23,7 +23,7 @@
 
         </ul>
     </form>
-    <P id="count_todo"></P>
+    <P id="count_todo"> </P>
 
     <script>
         // 투두 입력하면 ul 밑에 리스트로 입력값 출력하기
@@ -32,7 +32,10 @@
         const todoBoard = document.querySelector("#todo_board");
 
         plusButton.addEventListener("click", todoOnboard);
+
         
+
+
         function todoOnboard() {
         // 체크박스, 텍스트, 삭제버튼 생성
 
@@ -54,16 +57,12 @@
         
         // 체크박스 체크하면 스타일 변경 - 회색
             checkBox.addEventListener("click", done);
-        
-        // 체크하면 오늘 완료한 일 출력
+        // 체크박스 체크하면 카운트++
             checkBox.addEventListener("click", countTodo);
 
         // 삭제버튼 누르면 보드에서 삭제
             deleteButton.addEventListener("click", deleteTodo);
-
-        // 삭제버튼 누르면 오늘 완료한 일에서 -1 
             deleteButton.addEventListener("click", countTodo);
-            
             todoInput.value="";
         }
 
@@ -85,28 +84,26 @@
         }
 
         //체크한 수를 세어주는 함수
-        // 모든 리스트.length 중 
         // count = 0 에서 시작
         // 체크 +
         // 체크안함 -
-        // 삭제 -
-        // 
+        // 삭제 - 
         // '오늘 한일 몇 개' 문자열 리턴
-            
-            
+        
+        
+        //const length = todoBoard.childNodes.length-1; // n게 : n+1개가 됨
+        const print = document.querySelector("#count_todo");
+        let count = 0;
         
         function countTodo(event) {
             const check = event.target;
-            const length = todoBoard.childNodes.length-1; // n게 : n+1개가 됨
-            const print = document.querySelector("#count_todo");
-
-            let count = 0;
             //for ( i=1; i<length; i++) {       
                 if  ( check.checked ){
                     count++;
                     
                     
                 }
+                // 리스트에서 삭제된 경우
                 else if ( !(check.checked) ) {
                     count --;
                     
@@ -121,11 +118,7 @@
             
             
         }
-            
-            
-            // 밑에 출력하기
-    
-        
+
 
     </script>
 
